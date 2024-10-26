@@ -1,0 +1,181 @@
+% ladr-a-a
+% https://docs.google.com/document/d/1fuNFljCnQrDC9-tJYMUddyEV7h9e9Aw-ui-NxChFsts/edit?tab=t.0
+% !TEX encoding = UTF-8 Unicode
+% https://www.overleaf.com/read/fbvxfjsvrgcv#afc0a5
+\documentclass[11pt,letterpaper]{article}
+\usepackage{fancyhdr}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{{\tiny ladr-a-a,\ \filemodprintdate{\jobname},\ \filemodprinttime{\jobname},\ 1729798781}} % https://www.site24x7.com/tools/time-stamp-converter.html (https://www.unixtimestamp.com/ bad)
+% pdflatex makeindex pdflatex pdflatex
+% pdflatex bibtex pdflatex pdflatex
+% name of the bib file: refs.bib
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb,amsmath,amsthm} 
+%\usepackage[letterpaper,top=30pt,left=40pt,right=40pt,bottom=60pt]{geometry}
+\usepackage[letterpaper,top=50pt,left=60pt,right=60pt,bottom=80pt]{geometry}
+%\usepackage{imakeidx}
+%\usepackage{datetime}
+\usepackage{filemod}%https://stackoverflow.com/questions/2118972/latex-command-for-last-modified
+\usepackage{microtype}
+%\usepackage{graphicx}%https://www.johndcook.com/blog/2020/11/18/rotating-symbols-in-latex/ see also patch240105g
+%\usepackage{tikz-cd}
+%\usepackage{varwidth}
+%\usepackage{comment}
+\usepackage[pdfusetitle]{hyperref}%\texorpdfstring{$\boldsymbol{\tau_2}$}{tau2}
+%\usepackage{marvosym}% emoji https://tex.stackexchange.com/questions/3695/smileys-in-latex https://ctan.org/pkg/marvosym?lang=en
+%\usepackage{showkeys}%\usepackage{showlabels}
+\pagestyle{fancy}
+%\pagestyle{empty}
+\setlength{\parskip}{5pt} % variable
+\renewcommand{\baselinestretch}{1.1} % variable
+%\newtheorem{thm}{Theorem}%[section]
+%\newtheorem{cor}[thm]{Corollary}
+%\newtheorem{lem}[thm]{Lemma}
+%\newtheorem{prop}[thm]{Proposition}
+%\theoremstyle{definition}
+%\newtheorem{conv}[thm]{Convention}
+%\newtheorem{set}[thm]{Setting}
+%\newtheorem{dfn}[thm]{Definition}
+%\newcommand{\B}{\mathcal B}
+%\newcommand{\bc}{\bigcup}
+%\newcommand{\eps}{\varepsilon}%
+%\newcommand{\id}{\mathrm{id}}
+%\newcommand{\mc}{\mathcal}
+\newcommand{\noi}{\noindent}%
+%\newcommand{\Q}{\mathbb Q}%
+\newcommand{\sm}{\setminus}
+\newcommand{\R}{\mathbb R}
+%\newcommand{\T}{\mathcal T}
+\newcommand{\Z}{\mathbb Z}
+\begin{document}% \tiny \scriptsize \footnotesize \small \normalsize \large \Large \LARGE \huge \Huge 
+\begin{center}
+{\LARGE A few comments about ``Linear Algebra Done Right'' by Axler}\bigskip 
+
+Pierre-Yves Gaillard\footnote{ORCID https://orcid.org/0000-0002-7960-1698} 
+\end{center}%\centerline{LADR}\bigskip 
+
+\noi As the title indicates, we make a comments about the book \textbf{Linear Algebra Done Right} by Sheldon Axler. This is a work in progress. This is a complement to Jon U jubnoske08's excellent solutions in 
+
+[1] \url{https://github.com/jubnoske08/linear_algebra/tree/main}%\bigskip 
+
+\noi$\bullet$ \textbf{Exercise 1C9.} A function $f:\R\to\R$ is called \textbf{periodic} if there exists a positive number $p$ such that $f(x) = f(x+p)$ for all $x\in\R$.  Is the set of periodic functions from $\R$ to $\R$ a subspace of $\R^\R$?  Explain. 
+
+\noi\textbf{Solution.} The answer is no. To prove this, consider the functions $f,g:\R\to\R$ defined by 
+$$
+f(x)=
+\begin{cases}
+1\text{ if }x\in\Z\\ 
+0\text{ otherwise}
+\end{cases}
+$$ 
+and 
+$$
+g(x)=
+\begin{cases}
+1\text{ if }x\in\sqrt2\ \Z\\ 
+0\text{ otherwise}.
+\end{cases}
+$$ 
+These functions are periodic (of period 1 and $\sqrt2$ respectively). Claim: $f+g$ is not periodic. The claim will imply that the set of periodic functions from $\R$ to $\R$ is not a subspace of $\R^\R$. Proof of the claim: We have $(f+g)(0)=2$. If $f+g$ admitted the period $p>0$, we would have $(f+g)(p)=2$, and there would be nonzero integers $m$ and $n$ such that $m=p=n\sqrt2$, and thus $\sqrt2=m/n$, contradiction. 
+
+
+\noi$\bullet$ \textbf{Exercises 1C12 and 1C13.} Exercises 1C12 and 1C13 are particular cases of the following statement. 
+
+\noi\textbf{Statement.} Let $n$ be a positive integer, let $K$ be a field containing at least $n$ distinct elements, let $V$ be a $K$-vector space, and let $V_1,\ldots,V_n$ be $n$ \emph{proper} subspaces of $V$. Then $V\ne V_1\cup\cdots\cup V_n$. 
+
+\noi\textbf{Proof.} Assume by contradiction that we have $V=V_1\cup\cdots\cup V_n$. Given $v,w\in V$ with $v\ne w$ say that the \textbf{line} through $v$ and $w$ is the subset 
+$$
+L(v,w)=v+K\,(w-v)=\{v+a\,(w-v)\ |\ a\in K\}
+$$ 
+of $V$. Note that $L(w,v)=L(v,w)$. The lines $L(v,w)$ are easily seen to have the following properties: 
+
+\noi(a) $v,w\in L(v,w)$, 
+
+\noi(b) $L(v,w)$ contains at least $n$ distinct points\footnote{In this proof, the vectors of $V$ are called ``points''.}, 
+
+\noi(c) if a subspace $W$ of $V$ has at least two points in common with $L(v,w)$, then $L(v,w)\subset W$ and $w-v\in W$. 
+
+\noi We prove the statement. We can assume that $n$ is the least positive integer for which we have $V=V_1\cup\cdots\cup V_n$ for some family $(V_i)$ of proper subspaces. Clearly the integer $n$ is $\ge2$. We claim $V_n\subset V_1\cup\cdots\cup V_{n-1}$. This will imply $V=V_1\cup\cdots\cup V_{n-1}$, contradiction. To prove the claim, let $v_n$ be in $V_n$ and $v$ in $V\sm V_n$, and set $L:=L(v,v+v_n)$. We have $L\cap V_n=\varnothing$ because $v+av_n\in V_n$ would imply $v\in V_n$, contradiction. As a result, $L$ is contained in $V_1\cup\cdots\cup V_{n-1}$. By (b) and the pigeonhole principle, $L$ intersects some $V_i$ with $i<n$ in at least two points, and (c) yields $v_n\in V_i$, proving the claim. 
+
+\end{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\noi Statement. Let $n$ be a positive integer, let $K$ be a field containing at least $n+1$ distinct elements, let $V$ be a $K$-vector space, and let $V_1,\ldots,V_n$ be $n$ \emph{proper} linear subspaces of $V$. Then $V\ne V_1\cup\cdots\cup V_n$. 
+
+\noi Proof 1. Assume by contradiction that we have $V=V_1\cup\cdots\cup V_n$. Given $v,w\in V$ with $v\ne w$ say that the \textbf{line} through $v$ and $w$ is the subset 
+$$
+L(v,w)=v+K\,(w-v)=\{v+a\,(w-v)\ |\ a\in K\}
+$$ 
+of $V$. Note that $L(w,v)=L(v,w)$. The lines $L(v,w)$ have the following properties: 
+
+(a) $v,w\in L(v,w)$, 
+
+(b) $L(v,w)$ contains at least $n+1$ distinct vectors, 
+
+(c) if a linear subspace $W$ of $V$ has at least two vectors in common with $L(v,w)$, then $L(v,w)\subset W$, 
+
+(d) $L(v,w)\subset V_i$ for some $i$ (depending on $v$ and $w$), 
+
+(e) each $v$ in $V$ belongs to at least two $V_i$. 
+
+\noi To prove (d), note that $L(v,w)$ contains at least $n+1$ distinct vectors by (b), and each of these vectors belongs to some of the $n$ subspaces $V_i$. By the pigeonhole principle, at least one of the $V_i$ contains at least two of these vectors, and we conclude by (c). To prove (e), observe that any given $v$ in $V$ belongs to some $V_i$ by assumption. Let $w$ be in $V\sm V_i$. Then $v,w\in L(v,w)\subset V_j$ for some $j$ by (d). Since $w\notin V_i$, we have $j\ne i$, and $v\in V_j\cap V_i$. The other properties are easily checked. 
+
+\noi Proof of the statement. We can assume that $n$ is the least positive integer for which we have $V=V_1\cup\cdots\cup V_n$ for some family $(V_i)$ of proper linear subspaces. We clearly have $n\ge2$. Now (e) implies $V_n\subset V_1\cup\cdots\cup V_{n-1}$, and thus $V=V_1\cup\cdots\cup V_{n-1}$, contradicting the minimality of $n$. 
+
+\end{document}
+
+\noi Proof 1. Assume by contradiction that we have 
+\begin{equation}\label{Eu}
+V=V_1\cup\cdots\cup V_n. 
+\end{equation}
+Given $v,w\in V$ with $v\ne w$ say that the \textbf{line} through $v$ and $w$ is the subset 
+$$
+L(v,w)=v+K\,(w-v)=\{v+a\,(w-v)\ |\ a\in K\}
+$$ 
+of $V$. Note that $L(w,v)=L(v,w)$. The lines $L(v,w)$ have the following properties: 
+
+(a) $v,w\in L(v,w)$, 
+
+(b) $L(v,w)$ contains at least $n+1$ distinct vectors, 
+
+(c) if a linear subspace $W$ of $V$ has at least two vectors in common with $L(v,w)$, then $L(v,w)\subset W$, 
+
+(d) $L(v,w)\subset V_i$ for some $i$ (depending on $v$ and $w$). 
+
+\noi To prove (d), note that $L(v,w)$ contains at least $n+1$ distinct vectors by (b), and each of these vectors belongs to some of the $n$ subspaces $V_i$. By the pigeonhole principle, at least one of the $V_i$ contains at least two of these vectors, and we conclude by (c). The other properties are easily checked. 
+
+\noi Proof of the statement. We can assume that $n$ is the least positive integer for which a family $(V_i)$ as in \eqref{Eu} exists. In particular the subsets $S_1$ and $S_n$ of $V$ defined by $S_1:=V_1\sm(V_2\cup\cdots\cup V_n)$ and $S_n:=V_n\sm(V_1\cup\cdots\cup V_{n-1})$ are nonempty, and we get a contradiction with (d) by picking a $v_1$ in $S_1$ and a $v_n$ in $S_n$. 
+
+\end{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\noi Proof 2. Assume by contradiction that we have 
+\begin{equation}\label{Eu2}
+V=V_1\cup\cdots\cup V_n. 
+\end{equation}
+Given $v,w\in V$ with $v\ne w$ say that the \textbf{line} through $v$ and $w$ is the subset 
+$$
+L(v,w)=v+K\,(w-v)=\{v+a\,(w-v)\ |\ a\in K\}
+$$ 
+of $V$. Note that $L(w,v)=L(v,w)$. The lines have the following properties: 
+
+(a) $v,w\in L(v,w)$, 
+
+(b) $L(v,w)$ contains at least $n+1$ distinct vectors, 
+
+(c) if a linear subspace $W$ of $V$ has at least two vectors in common with $L(v,w)$, then $L(v,w)\subset W$, 
+
+(d) $L(v,w)\subset V_i$ for some $i$ depending on $v$ and $w$. 
+
+\noi To prove (d), note that, by (b), one of the $V_i$ contains two vectors of $L(v,w)$, and (c) entails (d). The other properties are easily checked. 
+
+\noi Proof of the statement. We can suppose that $n$ is the least positive integer for which a family $(V_i)$ as in \eqref{Eu2} exists. We have in particular $V\ne V_2\cup\cdots\cup V_n$, that is, $V_1\not\subset V_2\cup\cdots\cup V_n$. We claim that this yields the contradiction $V=V_1$. Let $v_1$ be in $V_n\sm(V_1\cup\cdots\cup V_{n-1})$. For each $v$ in $V$ we have (using (a)) $v_1,v\in L(v_1,v)\subset V_i$ for some $i$ by (d). But the only $i$ such that $v_i\in V_i$ is 1. 
+
+\noi Proof 2. Assume by contradiction that there is a least $n$ such that $V=V_1\cup\cdots\cup V_n$ for some proper linear subspaces $V_i$. Since $V\not\subset V_1\cup\cdots\cup V_{n-1}$ by minimality of $n$, we have $V_n\not\subset V_1\cup\cdots\cup V_{n-1}$. Let $v_n$ be in $V_n\sm(V_1\cup\cdots\cup V_{n-1})$, and $v$ in $V\sm V_n$. If $a$ is in $K^*:=K\sm\{0\}$, then $w:=v_n+av$ is not in $V_n$, and thus $w\in V_1\cup\cdots\cup V_{n-1}$. Since $n-1\le n-1<|K|-1$, there is an $i$ with $1\le i\le n-1$, and there are distinct $a,b$ in $K^*$ such that $v_n+av,v_n+bv\in V_i$. Hence $v$ is in $V_i$, hence $v_n$ is in $V_i$, contradicting the choice of $v_n$. 
+
+\noi Proof 3. Assume by contradiction that there is a least $n$ such that $V=V_1\cup\cdots\cup V_n$ for some proper linear subspaces $V_i$. Since $V\not\subset V_1\cup\cdots\cup V_{n-1}$ by minimality of $n$, we have $V_n\not\subset V_1\cup\cdots\cup V_{n-1}$. Let $v_n$ be in $V_n\sm(V_1\cup\cdots\cup V_{n-1})$, and $v$ in $V\sm V_n$. If $a$ is in $K^*:=K\sm\{0\}$, then $w:=v_n+av$ is not in $V_n$, and thus $w\in V_1\cup\cdots\cup V_{n-1}$. Since $n-1\le n-1<|K|-1$, there is an $i$ with $1\le i\le n-1$, and there are distinct $a,b$ in $K^*$ such that $v_n+av,v_n+bv\in V_i$. Hence $v$ is in $V_j$, hence $v_n$ is in $V_i$, contradicting the choice of $v_n$. 
+
+\noi Proof 4. Assume by contradiction that there is a least $k\le n$ such that $V=V_1\cup\cdots\cup V_k$ for some proper linear subspaces $V_i$. Let $v_k$ be in $V_k$ and $v$ in $V\sm V_k$. If $a$ is in $K^*:=K\sm\{0\}$, then $w:=v_k+av$ is not in $V_k$, and thus $w\in V_1\cup\cdots\cup V_{k-1}$. Since $k-1\le n-1<|K|-1$, there is a $j$ with $1\le j\le k-1$ and there are distinct $a,b$ in $K^*$ such that $v_k+av,v_k+bv\in V_j$, hence $v$ is in $V_j$, hence $v_k$ is in $V_j$, hence $v_k$ is in $V_1\cup\cdots\cup V_{k-1}$. Since $v_k$ was an arbitrary vector of $V_k$, this implies $V_k\subset V_1\cup\cdots\cup V_{k-1}$, and thus $V=V_1\cup\cdots\cup V_{k-1}$, contradicting the minimality of $k$. 
+
+\end{document}
